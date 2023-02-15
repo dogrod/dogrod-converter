@@ -1,0 +1,7 @@
+{
+    "less.lint.unknownAtRules": "ignore",
+    "scss.lint.unknownAtRules": "ignore",
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  }
+  
