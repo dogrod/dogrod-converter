@@ -24,7 +24,7 @@ export default async function handler(
 
   const originConfigUrl = query.url as string
 
-  const confHeader = `#!MANAGED-CONFIG https://${headers.host}${req.url} interval=43200`
+  const confHeader = `#!MANAGED-CONFIG https://${headers.host}${req.url} interval=43200\r`
 
   console.log('confHeader', confHeader)
 
@@ -41,6 +41,9 @@ export default async function handler(
   insertDomainRule(dataArr, 'bing.net')
 
   console.log('dataArr', dataArr)
+
+  // Replace first line by confHeader
+  dataArr[0] = confHeader
 
   // If json present in request header, return json
   if (headers?.accept?.includes('application/json')) {
