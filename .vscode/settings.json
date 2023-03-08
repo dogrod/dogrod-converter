@@ -1,7 +1,8 @@
 {
-    "less.lint.unknownAtRules": "ignore",
-    "scss.lint.unknownAtRules": "ignore",
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true
-  }
-  
+  "less.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "typescript.tsdk": "node_modules/.pnpm/typescript@4.9.5/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}
