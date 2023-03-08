@@ -42,5 +42,11 @@ export default async function handler(
 
   console.log('dataArr', dataArr)
 
-  res.status(200).json({ url: originConfigUrl, result: dataArr })
+  // If json present in request header, return json
+  if (headers?.accept?.includes('application/json')) {
+    res.status(200).json({ url: originConfigUrl, result: dataArr })
+  } else {
+    // else return plain text
+    res.status(200).send(dataArr.join(''))
+  }
 }
