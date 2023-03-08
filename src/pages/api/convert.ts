@@ -24,7 +24,7 @@ export default async function handler(
 
   const originConfigUrl = query.url as string
 
-  const confHeader = `#!MANAGED-CONFIG http://${headers.host}${req.url} interval=43200\r`
+  const confHeader = `#!MANAGED-CONFIG https://${headers.host}${req.url} interval=43200\r`
 
   console.log('confHeader', confHeader)
 
