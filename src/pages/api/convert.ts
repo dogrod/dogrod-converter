@@ -24,7 +24,7 @@ export default async function handler(
 
   const originConfigUrl = query.url as string
 
-  const confHeader = `#!MANAGED-CONFIG https://${headers.host}${req.url} interval=43200\r`
+  const confHeader = `#!MANAGED-CONFIG http://${headers.host}${req.url} interval=43200\r`
 
   console.log('confHeader', confHeader)
 
@@ -35,21 +35,34 @@ export default async function handler(
 
   // Insert domain rule after the last line start with DOMAIN,
   // Bing
-  insertDomainRule(dataArr, 'bing.com')
-  insertDomainRule(dataArr, 'www.bing.com')
-  insertDomainRule(dataArr, 'cn.bing.com')
-  insertDomainRule(dataArr, 'bing.net')
+  // insertDomainRule(dataArr, 'bing.com')
+  // insertDomainRule(dataArr, 'www.bing.com')
+  // insertDomainRule(dataArr, 'cn.bing.com')
+  // insertDomainRule(dataArr, 'bing.net')
 
   console.log('dataArr', dataArr)
 
   // Replace first line by confHeader
   dataArr[0] = confHeader
 
+  // Add line break at the end of line if not present
+  dataArr.forEach((line: string, i: number) => {
+    if (!line.endsWith('\r')) {
+      dataArr[i] = `${line}\r`
+    }
+  })
+
   // If json present in request header, return json
   if (headers?.accept?.includes('application/json')) {
     res.status(200).json({ url: originConfigUrl, result: dataArr })
   } else {
     // else return plain text
-    res.status(200).send(dataArr.join(''))
+    res
+      .status(200)
+      .setHeader(
+        'content-disposition',
+        'attachment;  filename=DogRod_Converter_Surge.conf',
+      )
+      .send(dataArr.join(''))
   }
 }
