@@ -34,7 +34,10 @@ export default async function handler(
   const dataArr = data.split('\n')
 
   // Insert domain rule after the last line start with DOMAIN,
+  // Bing
   insertDomainRule(dataArr, 'bing.com')
+  insertDomainRule(dataArr, 'www.bing.com')
+  insertDomainRule(dataArr, 'cn.bing.com')
   insertDomainRule(dataArr, 'bing.net')
 
   console.log('dataArr', dataArr)

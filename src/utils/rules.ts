@@ -28,12 +28,8 @@ export const insertDomainRule = (
 ) => {
   const domainRule = `${ruleType},${value},${target}`
 
-  const domainRules = dataArr.filter((line: string) =>
-    line.startsWith(RuleType.DOMAIN),
-  )
-
-  // Find the last index of line start with DOMAIN
-  const lastDomainIndex = findLastIndex(domainRules, (line: string) =>
+  // Find the index of line start with DOMAIN
+  const lastDomainIndex = findLastIndex(dataArr, (line: string) =>
     line.startsWith(RuleType.DOMAIN),
   )
 
