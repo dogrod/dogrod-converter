@@ -26,7 +26,7 @@ export const insertDomainRule = (
   target = 'Nexitally',
   ruleType = RuleType.DOMAIN,
 ) => {
-  const domainRule = `${ruleType},${value},${target}`
+  const domainRule = `${ruleType},${value},${target}\r`
 
   // Find the index of line start with DOMAIN
   const lastDomainIndex = findLastIndex(dataArr, (line: string) =>
